@@ -63,35 +63,65 @@ document.addEventListener('DOMContentLoaded', () => {
             const decoder = new TextDecoder('utf-8');
             let buffer = '';
 
-            while (true) {
-                const { done, value } = await reader.read();
-                if (done) break;
+            // In frontend/app.js innerhalb der while(true) Schleife von sendMessage():
+let currentHeroDiv = null;
 
-                buffer += decoder.decode(value, { stream: true });
-                const lines = buffer.split('\n');
+while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
 
-                // Behalte die letzte (möglicherweise unvollständige) Zeile im Buffer
-                buffer = lines.pop();
+    buffer += decoder.decode(value, { stream: true });
+    const lines = buffer.split('\n');
+    buffer = lines.pop();
 
-                for (const line of lines) {
-                    if (line.startsWith('data:')) {
-                        const dataPayload = line.slice(5).trim();
+    for (const line of lines) {
+        if (line.startsWith('data:')) {
+            const dataPayload = line.slice(5).trim();
+            if (dataPayload === '[DONE]' || dataPayload.includes('"status": "done"')) continue;
 
-                        if (dataPayload === '[DONE]' || dataPayload.includes('"status": "done"')) {
-                            Logger.info('Stream erfolgreich beendet');
-                            continue;
-                        }
+            // Wenn ein neuer Agent spricht oder eine Info kommt, neue Blase machen
+            if (dataPayload.includes('"status": "starting_agent"')) {
+                const info = JSON.parse(dataPayload);
+                currentHeroDiv = createHeroMessageElement();
 
-                        if (!dataPayload || dataPayload.includes('"status": "processing"')) continue;
+                // Agenten-Namen als Label hinzufügen
+                const nameLabel = document.createElement('div');
+                nameLabel.style.fontWeight = 'bold';
+                nameLabel.style.color = '#7aa2f7';
+                nameLabel.style.marginBottom = '5px';
+                nameLabel.textContent = info.agent;
+                currentHeroDiv.wrapper.prepend(nameLabel);
 
-                        const parsedData = parsePartialJson(dataPayload);
-                        if (parsedData) {
-                            updateHeroMessage(heroDiv, parsedData);
-                            scrollToBottom();
-                        }
-                    }
+                ui.container.appendChild(currentHeroDiv.wrapper);
+                scrollToBottom();
+                continue;
+            }
+
+            // System-Infos (z.B. Phasen-Übergänge) anzeigen
+            if (dataPayload.includes('"status": "info"')) {
+                const info = JSON.parse(dataPayload);
+                const infoDiv = document.createElement('div');
+                infoDiv.style.textAlign = 'center';
+                infoDiv.style.color = '#8c8fa1';
+                infoDiv.style.margin = '10px 0';
+                infoDiv.textContent = `--- ${info.message} ---`;
+                ui.container.appendChild(infoDiv);
+                scrollToBottom();
+                continue;
+            }
+
+            if (currentHeroDiv && !dataPayload.includes('"status": "agent_done"')) {
+                const parsedData = parsePartialJson(dataPayload);
+                if (parsedData) {
+                    // Berücksichtigt VoteResponse (chosen_option_id) und AgentResponse (spoken_text)
+                    if (parsedData.chosen_option_id) parsedData.spoken_text = `VOTE: ${parsedData.chosen_option_id}`;
+                    updateHeroMessage(currentHeroDiv, parsedData);
+                    scrollToBottom();
                 }
             }
+        }
+    }
+}
         } catch (error) {
             Logger.error('Stream-Verbindung fehlgeschlagen', error);
             updateHeroMessage(heroDiv, { spoken_text: "Die Verbindung zum Rat wurde unterbrochen." }, true);

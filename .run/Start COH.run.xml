@@ -1,0 +1,8 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Start COH" type="CompoundRunConfigurationType">
+    <toRun name="Frontend Server" type="PythonConfigurationType" />
+    <toRun name="Ollama Service Logs" type="ShConfigurationType" />
+    <toRun name="Backend FastAPI" type="UvRunConfigurationType" />
+    <method v="2" />
+  </configuration>
+</component>
