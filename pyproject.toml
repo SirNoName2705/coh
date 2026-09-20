@@ -1,0 +1,33 @@
+[project]
+name = "coh"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12, <3.13"
+dependencies = [
+    "fastapi>=0.110.0",
+    "instructor>=1.2.0",
+    "litellm>=1.35.0",
+    "pydantic>=2.7.0",
+    "pydantic-settings>=2.2.1",
+    "uvicorn[standard]>=0.29.0",
+    "loguru>=0.7.2",
+    "openai>=2.54.0",
+    "langchain-chroma>=1.1.0",
+    "langchain-community>=0.4.2",
+    "pyyaml>=6.0.3",
+    "langchain-core>=1.6.3",
+    "fastembed-gpu>=0.8.0",
+    "onnxruntime-gpu==1.19.2",
+    "tiktoken>=0.14.0",
+    "pandas>=3.0.6",
+    "renumics-spotlight>=1.7.1",
+]
+
+[[tool.uv.index]]
+name = "onnxruntime-cuda12"
+url = "https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-cuda-12/pypi/simple/"
+explicit = true
+
+[tool.uv.sources]
+onnxruntime-gpu = { index = "onnxruntime-cuda12" }

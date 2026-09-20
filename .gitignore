@@ -1,0 +1,38 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+.idea
+
+.documentation
+
+context.txt
+
+node_modules/
+
+
+# Backups & alte Versionen
+*.old
+*.bak
+
+# Log-Dateien ignorieren, Ordner via .gitkeep behalten
+logs/*
+!logs/.gitkeep
+
+#*.css
+#*.html
+#*.js
+
+
+# Ignoriere alles im data-Ordner
+data/authors/*/*
+
+# Behalte explizit die .gitkeep-Dateien
+!data/authors/*/.gitkeep

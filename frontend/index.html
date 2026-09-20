@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Council of Heroes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="chat-container">
+        <header class="chat-header">
+            <div class="header-left">
+                <h1>Council of Heroes</h1>
+                <select id="hero-select" class="hero-dropdown">
+                    <option value="dale_carnegie">Dale Carnegie</option>
+                    <option value="daniel_kahneman">Daniel Kahneman</option>
+                    <option value="jack_nasher">Jack Nasher</option>
+                    <option value="robert_b_cialdini">Robert B. Cialdini</option>
+                    <option value="roman_braun">Roman Braun</option>
+                    <option value="thorsten_havener">Thorsten Havener</option>
+                </select>
+            </div>
+            <span class="status-indicator" id="status-indicator"></span>
+        </header>
+
+        <main class="chat-messages" id="chat-messages">
+            <!-- Nachrichten werden hier dynamisch eingefügt -->
+        </main>
+
+        <footer class="chat-input-area">
+            <div class="input-wrapper">
+                <textarea id="user-input" placeholder="Sprich zum Rat..." rows="1"></textarea>
+                <button id="send-btn" title="Nachricht senden">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </div>
+        </footer>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

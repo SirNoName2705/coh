@@ -1,0 +1,805 @@
+.
+├── context.txt
+├── data
+│   ├── authors
+│   │   ├── dale_carnegie
+│   │   │   ├── chroma_db
+│   │   │   │   ├── chroma.sqlite3
+│   │   │   │   └── da3d9d9f-ecc3-4ff2-baa0-a9d3b696c50a
+│   │   │   │       ├── data_level0.bin
+│   │   │   │       ├── header.bin
+│   │   │   │       ├── length.bin
+│   │   │   │       └── link_lists.bin
+│   │   │   └── wie-man-freunde-gewinnt_B017XEVWR0
+│   │   │       ├── content
+│   │   │       │   ├── 001_chapter.md
+│   │   │       │   ├── 002_chapter.md
+│   │   │       │   ├── 003_chapter.md
+│   │   │       │   ├── 004_chapter.md
+│   │   │       │   ├── 005_chapter.md
+│   │   │       │   ├── 006_chapter.md
+│   │   │       │   ├── 007_chapter.md
+│   │   │       │   ├── 008_chapter.md
+│   │   │       │   ├── 009_chapter.md
+│   │   │       │   ├── 010_chapter.md
+│   │   │       │   ├── 011_chapter.md
+│   │   │       │   ├── 012_chapter.md
+│   │   │       │   ├── 013_chapter.md
+│   │   │       │   ├── 014_chapter.md
+│   │   │       │   ├── 015_chapter.md
+│   │   │       │   ├── 016_chapter.md
+│   │   │       │   ├── 017_chapter.md
+│   │   │       │   ├── 018_chapter.md
+│   │   │       │   ├── 019_chapter.md
+│   │   │       │   ├── 020_chapter.md
+│   │   │       │   ├── 021_chapter.md
+│   │   │       │   ├── 022_chapter.md
+│   │   │       │   ├── 023_chapter.md
+│   │   │       │   ├── 024_chapter.md
+│   │   │       │   ├── 025_chapter.md
+│   │   │       │   ├── 026_chapter.md
+│   │   │       │   ├── 027_chapter.md
+│   │   │       │   ├── 028_chapter.md
+│   │   │       │   ├── 029_chapter.md
+│   │   │       │   ├── 030_chapter.md
+│   │   │       │   ├── 031_chapter.md
+│   │   │       │   ├── 032_chapter.md
+│   │   │       │   ├── 033_chapter.md
+│   │   │       │   ├── 034_chapter.md
+│   │   │       │   ├── 035_chapter.md
+│   │   │       │   ├── 036_chapter.md
+│   │   │       │   ├── 037_chapter.md
+│   │   │       │   ├── 038_chapter.md
+│   │   │       │   ├── 039_chapter.md
+│   │   │       │   ├── 040_chapter.md
+│   │   │       │   ├── 041_chapter.md
+│   │   │       │   └── 042_chapter.md
+│   │   │       └── metadata.json
+│   │   ├── daniel_kahneman
+│   │   │   ├── chroma_db
+│   │   │   │   ├── 41553239-67cc-4aba-b2be-fe0122289dc0
+│   │   │   │   │   ├── data_level0.bin
+│   │   │   │   │   ├── header.bin
+│   │   │   │   │   ├── length.bin
+│   │   │   │   │   └── link_lists.bin
+│   │   │   │   └── chroma.sqlite3
+│   │   │   └── schnelles-denken-langsames-denken_B00AIMNQTM
+│   │   │       ├── content
+│   │   │       │   ├── 001_chapter.md
+│   │   │       │   ├── 002_chapter.md
+│   │   │       │   ├── 003_chapter.md
+│   │   │       │   ├── 004_chapter.md
+│   │   │       │   ├── 005_chapter.md
+│   │   │       │   ├── 006_chapter.md
+│   │   │       │   ├── 007_chapter.md
+│   │   │       │   ├── 008_chapter.md
+│   │   │       │   ├── 009_chapter.md
+│   │   │       │   ├── 010_chapter.md
+│   │   │       │   ├── 011_chapter.md
+│   │   │       │   ├── 012_chapter.md
+│   │   │       │   ├── 013_chapter.md
+│   │   │       │   ├── 014_chapter.md
+│   │   │       │   ├── 015_chapter.md
+│   │   │       │   ├── 016_chapter.md
+│   │   │       │   ├── 017_chapter.md
+│   │   │       │   ├── 018_chapter.md
+│   │   │       │   ├── 019_chapter.md
+│   │   │       │   ├── 020_chapter.md
+│   │   │       │   ├── 021_chapter.md
+│   │   │       │   ├── 022_chapter.md
+│   │   │       │   ├── 023_chapter.md
+│   │   │       │   ├── 024_chapter.md
+│   │   │       │   ├── 025_chapter.md
+│   │   │       │   ├── 026_chapter.md
+│   │   │       │   ├── 027_chapter.md
+│   │   │       │   ├── 028_chapter.md
+│   │   │       │   ├── 029_chapter.md
+│   │   │       │   ├── 030_chapter.md
+│   │   │       │   ├── 031_chapter.md
+│   │   │       │   ├── 032_chapter.md
+│   │   │       │   ├── 033_chapter.md
+│   │   │       │   ├── 034_chapter.md
+│   │   │       │   ├── 035_chapter.md
+│   │   │       │   ├── 036_chapter.md
+│   │   │       │   ├── 037_chapter.md
+│   │   │       │   ├── 038_chapter.md
+│   │   │       │   ├── 039_chapter.md
+│   │   │       │   ├── 040_chapter.md
+│   │   │       │   ├── 041_chapter.md
+│   │   │       │   ├── 042_chapter.md
+│   │   │       │   ├── 043_chapter.md
+│   │   │       │   ├── 044_chapter.md
+│   │   │       │   ├── 045_chapter.md
+│   │   │       │   ├── 046_chapter.md
+│   │   │       │   ├── 047_chapter.md
+│   │   │       │   ├── 048_chapter.md
+│   │   │       │   ├── 049_chapter.md
+│   │   │       │   ├── 050_chapter.md
+│   │   │       │   ├── 051_chapter.md
+│   │   │       │   ├── 052_chapter.md
+│   │   │       │   ├── 053_chapter.md
+│   │   │       │   ├── 054_chapter.md
+│   │   │       │   ├── 055_chapter.md
+│   │   │       │   ├── 056_chapter.md
+│   │   │       │   ├── 057_chapter.md
+│   │   │       │   ├── 058_chapter.md
+│   │   │       │   ├── 059_chapter.md
+│   │   │       │   ├── 060_chapter.md
+│   │   │       │   ├── 061_chapter.md
+│   │   │       │   ├── 062_chapter.md
+│   │   │       │   ├── 063_chapter.md
+│   │   │       │   ├── 064_chapter.md
+│   │   │       │   ├── 065_chapter.md
+│   │   │       │   ├── 066_chapter.md
+│   │   │       │   ├── 067_chapter.md
+│   │   │       │   ├── 068_chapter.md
+│   │   │       │   ├── 069_chapter.md
+│   │   │       │   ├── 070_chapter.md
+│   │   │       │   ├── 071_chapter.md
+│   │   │       │   ├── 072_chapter.md
+│   │   │       │   ├── 073_chapter.md
+│   │   │       │   ├── 074_chapter.md
+│   │   │       │   ├── 075_chapter.md
+│   │   │       │   ├── 076_chapter.md
+│   │   │       │   ├── 077_chapter.md
+│   │   │       │   ├── 078_chapter.md
+│   │   │       │   ├── 079_chapter.md
+│   │   │       │   ├── 080_chapter.md
+│   │   │       │   ├── 081_chapter.md
+│   │   │       │   ├── 082_chapter.md
+│   │   │       │   ├── 083_chapter.md
+│   │   │       │   ├── 084_chapter.md
+│   │   │       │   ├── 085_chapter.md
+│   │   │       │   ├── 086_chapter.md
+│   │   │       │   ├── 087_chapter.md
+│   │   │       │   ├── 088_chapter.md
+│   │   │       │   ├── 089_chapter.md
+│   │   │       │   ├── 090_chapter.md
+│   │   │       │   ├── 091_chapter.md
+│   │   │       │   ├── 092_chapter.md
+│   │   │       │   ├── 093_chapter.md
+│   │   │       │   ├── 094_chapter.md
+│   │   │       │   ├── 095_chapter.md
+│   │   │       │   ├── 096_chapter.md
+│   │   │       │   ├── 097_chapter.md
+│   │   │       │   ├── 098_chapter.md
+│   │   │       │   ├── 099_chapter.md
+│   │   │       │   ├── 100_chapter.md
+│   │   │       │   ├── 101_chapter.md
+│   │   │       │   ├── 102_chapter.md
+│   │   │       │   ├── 103_chapter.md
+│   │   │       │   ├── 104_chapter.md
+│   │   │       │   ├── 105_chapter.md
+│   │   │       │   ├── 106_chapter.md
+│   │   │       │   ├── 107_chapter.md
+│   │   │       │   ├── 108_chapter.md
+│   │   │       │   ├── 109_chapter.md
+│   │   │       │   ├── 110_chapter.md
+│   │   │       │   ├── 111_chapter.md
+│   │   │       │   ├── 112_chapter.md
+│   │   │       │   ├── 113_chapter.md
+│   │   │       │   ├── 114_chapter.md
+│   │   │       │   ├── 115_chapter.md
+│   │   │       │   ├── 116_chapter.md
+│   │   │       │   ├── 117_chapter.md
+│   │   │       │   ├── 118_chapter.md
+│   │   │       │   ├── 119_chapter.md
+│   │   │       │   ├── 120_chapter.md
+│   │   │       │   ├── 121_chapter.md
+│   │   │       │   ├── 122_chapter.md
+│   │   │       │   ├── 123_chapter.md
+│   │   │       │   ├── 124_chapter.md
+│   │   │       │   ├── 125_chapter.md
+│   │   │       │   ├── 126_chapter.md
+│   │   │       │   ├── 127_chapter.md
+│   │   │       │   ├── 128_chapter.md
+│   │   │       │   ├── 129_chapter.md
+│   │   │       │   ├── 130_chapter.md
+│   │   │       │   ├── 131_chapter.md
+│   │   │       │   ├── 132_chapter.md
+│   │   │       │   ├── 133_chapter.md
+│   │   │       │   ├── 134_chapter.md
+│   │   │       │   ├── 135_chapter.md
+│   │   │       │   ├── 136_chapter.md
+│   │   │       │   ├── 137_chapter.md
+│   │   │       │   ├── 138_chapter.md
+│   │   │       │   ├── 139_chapter.md
+│   │   │       │   ├── 140_chapter.md
+│   │   │       │   ├── 141_chapter.md
+│   │   │       │   ├── 142_chapter.md
+│   │   │       │   ├── 143_chapter.md
+│   │   │       │   ├── 144_chapter.md
+│   │   │       │   ├── 145_chapter.md
+│   │   │       │   ├── 146_chapter.md
+│   │   │       │   ├── 147_chapter.md
+│   │   │       │   ├── 148_chapter.md
+│   │   │       │   ├── 149_chapter.md
+│   │   │       │   ├── 150_chapter.md
+│   │   │       │   ├── 151_chapter.md
+│   │   │       │   ├── 152_chapter.md
+│   │   │       │   ├── 153_chapter.md
+│   │   │       │   ├── 154_chapter.md
+│   │   │       │   ├── 155_chapter.md
+│   │   │       │   ├── 156_chapter.md
+│   │   │       │   ├── 157_chapter.md
+│   │   │       │   ├── 158_chapter.md
+│   │   │       │   ├── 159_chapter.md
+│   │   │       │   ├── 160_chapter.md
+│   │   │       │   ├── 161_chapter.md
+│   │   │       │   ├── 162_chapter.md
+│   │   │       │   ├── 163_chapter.md
+│   │   │       │   ├── 164_chapter.md
+│   │   │       │   ├── 165_chapter.md
+│   │   │       │   ├── 166_chapter.md
+│   │   │       │   ├── 167_chapter.md
+│   │   │       │   ├── 168_chapter.md
+│   │   │       │   └── 169_chapter.md
+│   │   │       └── metadata.json
+│   │   ├── jack_nasher
+│   │   │   ├── chroma_db
+│   │   │   │   ├── chroma.sqlite3
+│   │   │   │   └── fdfd03c3-e8f9-4b3c-8bbd-96e8a50b0808
+│   │   │   │       ├── data_level0.bin
+│   │   │   │       ├── header.bin
+│   │   │   │       ├── length.bin
+│   │   │   │       └── link_lists.bin
+│   │   │   ├── deal_B00CX62EBM
+│   │   │   │   ├── content
+│   │   │   │   │   ├── 001_chapter.md
+│   │   │   │   │   ├── 002_chapter.md
+│   │   │   │   │   ├── 003_chapter.md
+│   │   │   │   │   ├── 004_chapter.md
+│   │   │   │   │   ├── 005_chapter.md
+│   │   │   │   │   ├── 006_chapter.md
+│   │   │   │   │   ├── 007_chapter.md
+│   │   │   │   │   ├── 008_chapter.md
+│   │   │   │   │   ├── 009_chapter.md
+│   │   │   │   │   ├── 010_chapter.md
+│   │   │   │   │   ├── 011_chapter.md
+│   │   │   │   │   ├── 012_chapter.md
+│   │   │   │   │   ├── 013_chapter.md
+│   │   │   │   │   ├── 014_chapter.md
+│   │   │   │   │   ├── 015_chapter.md
+│   │   │   │   │   ├── 016_chapter.md
+│   │   │   │   │   ├── 017_chapter.md
+│   │   │   │   │   ├── 018_chapter.md
+│   │   │   │   │   └── 019_chapter.md
+│   │   │   │   └── metadata.json
+│   │   │   └── ueberzeugt-wie-sie-kompetenz-zeigen-und-menschen-fuer-sich-gewinnen_B01MS8QBKV
+│   │   │       ├── appendix
+│   │   │       │   └── B01MS8QBKV_-_Überzeugt!_Wie_Sie_Kompetenz_zeigen_und_Menschen_für_sich_gewinnen.md
+│   │   │       ├── content
+│   │   │       │   ├── 001_chapter.md
+│   │   │       │   ├── 002_chapter.md
+│   │   │       │   ├── 003_chapter.md
+│   │   │       │   ├── 004_chapter.md
+│   │   │       │   ├── 005_chapter.md
+│   │   │       │   ├── 006_chapter.md
+│   │   │       │   ├── 007_chapter.md
+│   │   │       │   ├── 008_chapter.md
+│   │   │       │   ├── 009_chapter.md
+│   │   │       │   ├── 010_chapter.md
+│   │   │       │   ├── 011_chapter.md
+│   │   │       │   ├── 012_chapter.md
+│   │   │       │   ├── 013_chapter.md
+│   │   │       │   ├── 014_chapter.md
+│   │   │       │   ├── 015_chapter.md
+│   │   │       │   ├── 016_chapter.md
+│   │   │       │   ├── 017_chapter.md
+│   │   │       │   ├── 018_chapter.md
+│   │   │       │   ├── 019_chapter.md
+│   │   │       │   ├── 020_chapter.md
+│   │   │       │   ├── 021_chapter.md
+│   │   │       │   ├── 022_chapter.md
+│   │   │       │   ├── 023_chapter.md
+│   │   │       │   ├── 024_chapter.md
+│   │   │       │   ├── 025_chapter.md
+│   │   │       │   ├── 026_chapter.md
+│   │   │       │   ├── 027_chapter.md
+│   │   │       │   ├── 028_chapter.md
+│   │   │       │   ├── 029_chapter.md
+│   │   │       │   ├── 030_chapter.md
+│   │   │       │   ├── 031_chapter.md
+│   │   │       │   ├── 032_chapter.md
+│   │   │       │   ├── 033_chapter.md
+│   │   │       │   ├── 034_chapter.md
+│   │   │       │   ├── 035_chapter.md
+│   │   │       │   ├── 036_chapter.md
+│   │   │       │   ├── 037_chapter.md
+│   │   │       │   ├── 038_chapter.md
+│   │   │       │   ├── 039_chapter.md
+│   │   │       │   ├── 040_chapter.md
+│   │   │       │   ├── 041_chapter.md
+│   │   │       │   ├── 042_chapter.md
+│   │   │       │   ├── 043_chapter.md
+│   │   │       │   ├── 044_chapter.md
+│   │   │       │   ├── 045_chapter.md
+│   │   │       │   ├── 046_chapter.md
+│   │   │       │   ├── 047_chapter.md
+│   │   │       │   ├── 048_chapter.md
+│   │   │       │   ├── 049_chapter.md
+│   │   │       │   ├── 050_chapter.md
+│   │   │       │   ├── 051_chapter.md
+│   │   │       │   ├── 052_chapter.md
+│   │   │       │   ├── 053_chapter.md
+│   │   │       │   ├── 054_chapter.md
+│   │   │       │   ├── 055_chapter.md
+│   │   │       │   ├── 056_chapter.md
+│   │   │       │   ├── 057_chapter.md
+│   │   │       │   ├── 058_chapter.md
+│   │   │       │   ├── 059_chapter.md
+│   │   │       │   ├── 060_chapter.md
+│   │   │       │   ├── 061_chapter.md
+│   │   │       │   ├── 062_chapter.md
+│   │   │       │   ├── 063_chapter.md
+│   │   │       │   ├── 064_chapter.md
+│   │   │       │   ├── 065_chapter.md
+│   │   │       │   ├── 066_chapter.md
+│   │   │       │   ├── 067_chapter.md
+│   │   │       │   ├── 068_chapter.md
+│   │   │       │   ├── 069_chapter.md
+│   │   │       │   ├── 070_chapter.md
+│   │   │       │   ├── 071_chapter.md
+│   │   │       │   ├── 072_chapter.md
+│   │   │       │   ├── 073_chapter.md
+│   │   │       │   ├── 074_chapter.md
+│   │   │       │   ├── 075_chapter.md
+│   │   │       │   ├── 076_chapter.md
+│   │   │       │   ├── 077_chapter.md
+│   │   │       │   ├── 078_chapter.md
+│   │   │       │   ├── 079_chapter.md
+│   │   │       │   └── 080_chapter.md
+│   │   │       └── metadata.json
+│   │   ├── michael_ehlers
+│   │   │   ├── chroma_db
+│   │   │   │   ├── 33760729-4f4a-4b72-9c7e-f6882f514a0a
+│   │   │   │   │   ├── data_level0.bin
+│   │   │   │   │   ├── header.bin
+│   │   │   │   │   ├── length.bin
+│   │   │   │   │   └── link_lists.bin
+│   │   │   │   └── chroma.sqlite3
+│   │   │   └── rhetorik_B07D17SD53
+│   │   │       ├── content
+│   │   │       │   ├── 001_chapter.md
+│   │   │       │   ├── 002_chapter.md
+│   │   │       │   ├── 003_chapter.md
+│   │   │       │   ├── 004_chapter.md
+│   │   │       │   ├── 005_chapter.md
+│   │   │       │   ├── 006_chapter.md
+│   │   │       │   ├── 007_chapter.md
+│   │   │       │   ├── 008_chapter.md
+│   │   │       │   ├── 009_chapter.md
+│   │   │       │   ├── 010_chapter.md
+│   │   │       │   ├── 011_chapter.md
+│   │   │       │   ├── 012_chapter.md
+│   │   │       │   ├── 013_chapter.md
+│   │   │       │   ├── 014_chapter.md
+│   │   │       │   ├── 015_chapter.md
+│   │   │       │   ├── 016_chapter.md
+│   │   │       │   ├── 017_chapter.md
+│   │   │       │   ├── 018_chapter.md
+│   │   │       │   ├── 019_chapter.md
+│   │   │       │   ├── 020_chapter.md
+│   │   │       │   ├── 021_chapter.md
+│   │   │       │   ├── 022_chapter.md
+│   │   │       │   ├── 023_chapter.md
+│   │   │       │   ├── 024_chapter.md
+│   │   │       │   ├── 025_chapter.md
+│   │   │       │   ├── 026_chapter.md
+│   │   │       │   ├── 027_chapter.md
+│   │   │       │   ├── 028_chapter.md
+│   │   │       │   ├── 029_chapter.md
+│   │   │       │   ├── 030_chapter.md
+│   │   │       │   ├── 031_chapter.md
+│   │   │       │   ├── 032_chapter.md
+│   │   │       │   ├── 033_chapter.md
+│   │   │       │   ├── 034_chapter.md
+│   │   │       │   ├── 035_chapter.md
+│   │   │       │   ├── 036_chapter.md
+│   │   │       │   ├── 037_chapter.md
+│   │   │       │   ├── 038_chapter.md
+│   │   │       │   ├── 039_chapter.md
+│   │   │       │   ├── 040_chapter.md
+│   │   │       │   ├── 041_chapter.md
+│   │   │       │   ├── 042_chapter.md
+│   │   │       │   ├── 043_chapter.md
+│   │   │       │   ├── 044_chapter.md
+│   │   │       │   ├── 045_chapter.md
+│   │   │       │   ├── 046_chapter.md
+│   │   │       │   ├── 047_chapter.md
+│   │   │       │   ├── 048_chapter.md
+│   │   │       │   ├── 049_chapter.md
+│   │   │       │   ├── 050_chapter.md
+│   │   │       │   ├── 051_chapter.md
+│   │   │       │   ├── 052_chapter.md
+│   │   │       │   ├── 053_chapter.md
+│   │   │       │   ├── 054_chapter.md
+│   │   │       │   ├── 055_chapter.md
+│   │   │       │   ├── 056_chapter.md
+│   │   │       │   ├── 057_chapter.md
+│   │   │       │   ├── 058_chapter.md
+│   │   │       │   ├── 059_chapter.md
+│   │   │       │   ├── 060_chapter.md
+│   │   │       │   ├── 061_chapter.md
+│   │   │       │   ├── 062_chapter.md
+│   │   │       │   ├── 063_chapter.md
+│   │   │       │   ├── 064_chapter.md
+│   │   │       │   ├── 065_chapter.md
+│   │   │       │   ├── 066_chapter.md
+│   │   │       │   ├── 067_chapter.md
+│   │   │       │   ├── 068_chapter.md
+│   │   │       │   ├── 069_chapter.md
+│   │   │       │   ├── 070_chapter.md
+│   │   │       │   ├── 071_chapter.md
+│   │   │       │   ├── 072_chapter.md
+│   │   │       │   ├── 073_chapter.md
+│   │   │       │   ├── 074_chapter.md
+│   │   │       │   ├── 075_chapter.md
+│   │   │       │   ├── 076_chapter.md
+│   │   │       │   ├── 077_chapter.md
+│   │   │       │   ├── 078_chapter.md
+│   │   │       │   ├── 079_chapter.md
+│   │   │       │   ├── 080_chapter.md
+│   │   │       │   ├── 081_chapter.md
+│   │   │       │   ├── 082_chapter.md
+│   │   │       │   ├── 083_chapter.md
+│   │   │       │   ├── 084_chapter.md
+│   │   │       │   ├── 085_chapter.md
+│   │   │       │   ├── 086_chapter.md
+│   │   │       │   ├── 087_chapter.md
+│   │   │       │   ├── 088_chapter.md
+│   │   │       │   ├── 089_chapter.md
+│   │   │       │   ├── 090_chapter.md
+│   │   │       │   ├── 091_chapter.md
+│   │   │       │   ├── 092_chapter.md
+│   │   │       │   ├── 093_chapter.md
+│   │   │       │   ├── 094_chapter.md
+│   │   │       │   ├── 095_chapter.md
+│   │   │       │   ├── 096_chapter.md
+│   │   │       │   ├── 097_chapter.md
+│   │   │       │   ├── 098_chapter.md
+│   │   │       │   ├── 099_chapter.md
+│   │   │       │   ├── 100_chapter.md
+│   │   │       │   ├── 101_chapter.md
+│   │   │       │   ├── 102_chapter.md
+│   │   │       │   ├── 103_chapter.md
+│   │   │       │   ├── 104_chapter.md
+│   │   │       │   ├── 105_chapter.md
+│   │   │       │   ├── 106_chapter.md
+│   │   │       │   └── 107_chapter.md
+│   │   │       └── metadata.json
+│   │   ├── robert_b_cialdini
+│   │   │   ├── chroma_db
+│   │   │   │   ├── b3b08e0d-7b56-463a-b722-53cef85e144d
+│   │   │   │   │   ├── data_level0.bin
+│   │   │   │   │   ├── header.bin
+│   │   │   │   │   ├── length.bin
+│   │   │   │   │   └── link_lists.bin
+│   │   │   │   └── chroma.sqlite3
+│   │   │   └── die-psychologie-des-ueberzeugens_B0727Q9TPR
+│   │   │       ├── content
+│   │   │       │   ├── 001_chapter.md
+│   │   │       │   ├── 002_chapter.md
+│   │   │       │   ├── 003_chapter.md
+│   │   │       │   ├── 004_chapter.md
+│   │   │       │   ├── 005_chapter.md
+│   │   │       │   ├── 006_chapter.md
+│   │   │       │   ├── 007_chapter.md
+│   │   │       │   ├── 008_chapter.md
+│   │   │       │   ├── 009_chapter.md
+│   │   │       │   ├── 010_chapter.md
+│   │   │       │   ├── 011_chapter.md
+│   │   │       │   ├── 012_chapter.md
+│   │   │       │   ├── 013_chapter.md
+│   │   │       │   ├── 014_chapter.md
+│   │   │       │   ├── 015_chapter.md
+│   │   │       │   ├── 016_chapter.md
+│   │   │       │   ├── 017_chapter.md
+│   │   │       │   ├── 018_chapter.md
+│   │   │       │   ├── 019_chapter.md
+│   │   │       │   ├── 020_chapter.md
+│   │   │       │   ├── 021_chapter.md
+│   │   │       │   ├── 022_chapter.md
+│   │   │       │   ├── 023_chapter.md
+│   │   │       │   ├── 024_chapter.md
+│   │   │       │   ├── 025_chapter.md
+│   │   │       │   ├── 026_chapter.md
+│   │   │       │   ├── 027_chapter.md
+│   │   │       │   ├── 028_chapter.md
+│   │   │       │   ├── 029_chapter.md
+│   │   │       │   ├── 030_chapter.md
+│   │   │       │   ├── 031_chapter.md
+│   │   │       │   ├── 032_chapter.md
+│   │   │       │   ├── 033_chapter.md
+│   │   │       │   ├── 034_chapter.md
+│   │   │       │   ├── 035_chapter.md
+│   │   │       │   ├── 036_chapter.md
+│   │   │       │   ├── 037_chapter.md
+│   │   │       │   ├── 038_chapter.md
+│   │   │       │   ├── 039_chapter.md
+│   │   │       │   ├── 040_chapter.md
+│   │   │       │   ├── 041_chapter.md
+│   │   │       │   ├── 042_chapter.md
+│   │   │       │   ├── 043_chapter.md
+│   │   │       │   ├── 044_chapter.md
+│   │   │       │   ├── 045_chapter.md
+│   │   │       │   ├── 046_chapter.md
+│   │   │       │   ├── 047_chapter.md
+│   │   │       │   ├── 048_chapter.md
+│   │   │       │   ├── 049_chapter.md
+│   │   │       │   ├── 050_chapter.md
+│   │   │       │   ├── 051_chapter.md
+│   │   │       │   ├── 052_chapter.md
+│   │   │       │   ├── 053_chapter.md
+│   │   │       │   ├── 054_chapter.md
+│   │   │       │   ├── 055_chapter.md
+│   │   │       │   ├── 056_chapter.md
+│   │   │       │   ├── 057_chapter.md
+│   │   │       │   ├── 058_chapter.md
+│   │   │       │   ├── 059_chapter.md
+│   │   │       │   ├── 060_chapter.md
+│   │   │       │   ├── 061_chapter.md
+│   │   │       │   ├── 062_chapter.md
+│   │   │       │   ├── 063_chapter.md
+│   │   │       │   ├── 064_chapter.md
+│   │   │       │   ├── 065_chapter.md
+│   │   │       │   ├── 066_chapter.md
+│   │   │       │   ├── 067_chapter.md
+│   │   │       │   ├── 068_chapter.md
+│   │   │       │   ├── 069_chapter.md
+│   │   │       │   ├── 070_chapter.md
+│   │   │       │   ├── 071_chapter.md
+│   │   │       │   ├── 072_chapter.md
+│   │   │       │   ├── 073_chapter.md
+│   │   │       │   ├── 074_chapter.md
+│   │   │       │   ├── 075_chapter.md
+│   │   │       │   ├── 076_chapter.md
+│   │   │       │   ├── 077_chapter.md
+│   │   │       │   ├── 078_chapter.md
+│   │   │       │   ├── 079_chapter.md
+│   │   │       │   ├── 080_chapter.md
+│   │   │       │   ├── 081_chapter.md
+│   │   │       │   ├── 082_chapter.md
+│   │   │       │   ├── 083_chapter.md
+│   │   │       │   ├── 084_chapter.md
+│   │   │       │   ├── 085_chapter.md
+│   │   │       │   ├── 086_chapter.md
+│   │   │       │   ├── 087_chapter.md
+│   │   │       │   ├── 088_chapter.md
+│   │   │       │   ├── 089_chapter.md
+│   │   │       │   ├── 090_chapter.md
+│   │   │       │   ├── 091_chapter.md
+│   │   │       │   ├── 092_chapter.md
+│   │   │       │   ├── 093_chapter.md
+│   │   │       │   ├── 094_chapter.md
+│   │   │       │   ├── 095_chapter.md
+│   │   │       │   └── 096_chapter.md
+│   │   │       └── metadata.json
+│   │   ├── roman_braun
+│   │   │   ├── chroma_db
+│   │   │   │   ├── chroma.sqlite3
+│   │   │   │   └── e097bcf4-a851-4a86-9ed6-d827cf2b2f83
+│   │   │   │       ├── data_level0.bin
+│   │   │   │       ├── header.bin
+│   │   │   │       ├── length.bin
+│   │   │   │       └── link_lists.bin
+│   │   │   └── die-macht-der-rhetorik_3962671099
+│   │   │       ├── content
+│   │   │       │   ├── 001_chapter.md
+│   │   │       │   ├── 002_chapter.md
+│   │   │       │   ├── 003_chapter.md
+│   │   │       │   ├── 004_chapter.md
+│   │   │       │   ├── 005_chapter.md
+│   │   │       │   ├── 006_chapter.md
+│   │   │       │   ├── 007_chapter.md
+│   │   │       │   ├── 008_chapter.md
+│   │   │       │   ├── 009_chapter.md
+│   │   │       │   ├── 010_chapter.md
+│   │   │       │   ├── 011_chapter.md
+│   │   │       │   ├── 012_chapter.md
+│   │   │       │   ├── 013_chapter.md
+│   │   │       │   ├── 014_chapter.md
+│   │   │       │   ├── 015_chapter.md
+│   │   │       │   ├── 016_chapter.md
+│   │   │       │   ├── 017_chapter.md
+│   │   │       │   ├── 018_chapter.md
+│   │   │       │   ├── 019_chapter.md
+│   │   │       │   ├── 020_chapter.md
+│   │   │       │   ├── 021_chapter.md
+│   │   │       │   ├── 022_chapter.md
+│   │   │       │   ├── 023_chapter.md
+│   │   │       │   ├── 024_chapter.md
+│   │   │       │   ├── 025_chapter.md
+│   │   │       │   ├── 026_chapter.md
+│   │   │       │   ├── 027_chapter.md
+│   │   │       │   ├── 028_chapter.md
+│   │   │       │   ├── 029_chapter.md
+│   │   │       │   ├── 030_chapter.md
+│   │   │       │   ├── 031_chapter.md
+│   │   │       │   ├── 032_chapter.md
+│   │   │       │   ├── 033_chapter.md
+│   │   │       │   ├── 034_chapter.md
+│   │   │       │   ├── 035_chapter.md
+│   │   │       │   ├── 036_chapter.md
+│   │   │       │   ├── 037_chapter.md
+│   │   │       │   ├── 038_chapter.md
+│   │   │       │   ├── 039_chapter.md
+│   │   │       │   ├── 040_chapter.md
+│   │   │       │   ├── 041_chapter.md
+│   │   │       │   ├── 042_chapter.md
+│   │   │       │   ├── 043_chapter.md
+│   │   │       │   ├── 044_chapter.md
+│   │   │       │   ├── 045_chapter.md
+│   │   │       │   ├── 046_chapter.md
+│   │   │       │   ├── 047_chapter.md
+│   │   │       │   ├── 048_chapter.md
+│   │   │       │   ├── 049_chapter.md
+│   │   │       │   ├── 050_chapter.md
+│   │   │       │   ├── 051_chapter.md
+│   │   │       │   ├── 052_chapter.md
+│   │   │       │   ├── 053_chapter.md
+│   │   │       │   ├── 054_chapter.md
+│   │   │       │   ├── 055_chapter.md
+│   │   │       │   ├── 056_chapter.md
+│   │   │       │   ├── 057_chapter.md
+│   │   │       │   ├── 058_chapter.md
+│   │   │       │   ├── 059_chapter.md
+│   │   │       │   ├── 060_chapter.md
+│   │   │       │   ├── 061_chapter.md
+│   │   │       │   ├── 062_chapter.md
+│   │   │       │   ├── 063_chapter.md
+│   │   │       │   ├── 064_chapter.md
+│   │   │       │   ├── 065_chapter.md
+│   │   │       │   ├── 066_chapter.md
+│   │   │       │   ├── 067_chapter.md
+│   │   │       │   ├── 068_chapter.md
+│   │   │       │   ├── 069_chapter.md
+│   │   │       │   ├── 070_chapter.md
+│   │   │       │   ├── 071_chapter.md
+│   │   │       │   ├── 072_chapter.md
+│   │   │       │   ├── 073_chapter.md
+│   │   │       │   ├── 074_chapter.md
+│   │   │       │   ├── 075_chapter.md
+│   │   │       │   ├── 076_chapter.md
+│   │   │       │   ├── 077_chapter.md
+│   │   │       │   ├── 078_chapter.md
+│   │   │       │   ├── 079_chapter.md
+│   │   │       │   ├── 080_chapter.md
+│   │   │       │   ├── 081_chapter.md
+│   │   │       │   ├── 082_chapter.md
+│   │   │       │   ├── 083_chapter.md
+│   │   │       │   ├── 084_chapter.md
+│   │   │       │   ├── 085_chapter.md
+│   │   │       │   ├── 086_chapter.md
+│   │   │       │   ├── 087_chapter.md
+│   │   │       │   ├── 088_chapter.md
+│   │   │       │   ├── 089_chapter.md
+│   │   │       │   ├── 090_chapter.md
+│   │   │       │   ├── 091_chapter.md
+│   │   │       │   ├── 092_chapter.md
+│   │   │       │   ├── 093_chapter.md
+│   │   │       │   ├── 094_chapter.md
+│   │   │       │   ├── 095_chapter.md
+│   │   │       │   ├── 096_chapter.md
+│   │   │       │   ├── 097_chapter.md
+│   │   │       │   ├── 098_chapter.md
+│   │   │       │   ├── 099_chapter.md
+│   │   │       │   ├── 100_chapter.md
+│   │   │       │   ├── 101_chapter.md
+│   │   │       │   ├── 102_chapter.md
+│   │   │       │   ├── 103_chapter.md
+│   │   │       │   ├── 104_chapter.md
+│   │   │       │   ├── 105_chapter.md
+│   │   │       │   ├── 106_chapter.md
+│   │   │       │   ├── 107_chapter.md
+│   │   │       │   └── 108_chapter.md
+│   │   │       └── metadata.json
+│   │   └── thorsten_havener
+│   │       ├── chroma_db
+│   │       │   ├── 2990efcf-e727-4b67-a005-3d2ba37bbe46
+│   │       │   │   ├── data_level0.bin
+│   │       │   │   ├── header.bin
+│   │       │   │   ├── length.bin
+│   │       │   │   └── link_lists.bin
+│   │       │   └── chroma.sqlite3
+│   │       └── ich-weiss-was-du-denkst_B0081OX2F2
+│   │           ├── content
+│   │           │   ├── 001_chapter.md
+│   │           │   ├── 002_chapter.md
+│   │           │   ├── 003_chapter.md
+│   │           │   ├── 004_chapter.md
+│   │           │   ├── 005_chapter.md
+│   │           │   ├── 006_chapter.md
+│   │           │   ├── 007_chapter.md
+│   │           │   ├── 008_chapter.md
+│   │           │   ├── 009_chapter.md
+│   │           │   ├── 010_chapter.md
+│   │           │   ├── 011_chapter.md
+│   │           │   ├── 012_chapter.md
+│   │           │   ├── 013_chapter.md
+│   │           │   ├── 014_chapter.md
+│   │           │   ├── 015_chapter.md
+│   │           │   ├── 016_chapter.md
+│   │           │   ├── 017_chapter.md
+│   │           │   ├── 018_chapter.md
+│   │           │   └── 019_chapter.md
+│   │           └── metadata.json
+│   └── authors.7z
+├── embedded_models.txt
+├── frontend
+│   ├── app.js
+│   ├── app.js.bak
+│   ├── index.htm.bak
+│   ├── index.html
+│   ├── style.css
+│   └── style.css.bak
+├── in
+├── logs
+│   ├── council_of_heroes.log
+│   └── ingest.log
+├── out
+├── pyproject.toml
+├── README.md
+├── scripts
+│   ├── ingest_newer.py.bak
+│   ├── ingest_new.py.bak
+│   ├── ingest.py
+│   ├── ingest.py.bak
+│   ├── ingest.pyWTF IS THIS
+│   ├── inspect_chroma.py
+│   └── rename_it.py
+├── src
+│   ├── agents
+│   │   ├── executor.py
+│   │   ├── executor.py.bak
+│   │   ├── __init__.py
+│   │   ├── persona.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   └── schemas.cpython-312.pyc
+│   │   └── schemas.py
+│   ├── api
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   ├── __init__.cpython-313.pyc
+│   │   │   ├── routes.cpython-312.pyc
+│   │   │   └── routes.cpython-313.pyc
+│   │   └── routes.py
+│   ├── config.py
+│   ├── core
+│   │   ├── __init__.py
+│   │   ├── llm_client.py
+│   │   ├── logger.py
+│   │   └── __pycache__
+│   │       ├── __init__.cpython-312.pyc
+│   │       ├── __init__.cpython-313.pyc
+│   │       ├── llm_client.cpython-312.pyc
+│   │       ├── llm_client.cpython-313.pyc
+│   │       ├── logger.cpython-312.pyc
+│   │       └── logger.cpython-313.pyc
+│   ├── __init__.py
+│   ├── llm_client.py.bak
+│   ├── main.py
+│   ├── orchestration
+│   │   ├── __init__.py
+│   │   └── strategies.py
+│   ├── __pycache__
+│   │   ├── config.cpython-312.pyc
+│   │   ├── config.cpython-313.pyc
+│   │   ├── __init__.cpython-312.pyc
+│   │   ├── __init__.cpython-313.pyc
+│   │   ├── main.cpython-312.pyc
+│   │   └── main.cpython-313.pyc
+│   ├── rag
+│   │   ├── chroma_manager.py
+│   │   ├── chroma_manager.py.bak
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   │       ├── chroma_manager.cpython-312.pyc
+│   │       └── __init__.cpython-312.pyc
+│   └── schemas.py.bak
+├── tree.txt
+└── uv.lock
+
+57 directories, 746 files

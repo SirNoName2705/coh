@@ -1,0 +1,16 @@
+BAAI/bge-{small,base}-en
+BAAI/bge-{small,base,large}-en-v1.5
+BAAI/bge-small-zh-v1.5
+intfloat/multilingual-e5-large
+jinaai/jina-clip-v1
+jinaai/jina-embeddings-v2-base-code
+jinaai/jina-embeddings-v2-base-{de,en,es,zh}
+jinaai/jina-embeddings-v2-small-en
+jinaai/jina-embeddings-v3
+mixedbread-ai/mxbai-embed-large-v1
+nomic-ai/nomic-embed-text-{v1,v1.5,v1.5-Q}
+Qdrant/clip-ViT-B-32-text
+sentence-transformers/all-MiniLM-L6-v2
+sentence-transformers/paraphrase-multilingual-{MiniLM-L12,mpnet-base}-v2
+snowflake/snowflake-arctic-embed-{xs,s,m,m-long,l}
+thenlper/gte-{base,large}
