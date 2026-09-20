@@ -30,20 +30,23 @@ body {
     flex-direction: column;
     width: 100%;
     max-width: 900px;
-    height: 95vh;
+    /* height: 95vh; KOMMENTIERT FÜR SCREENSHOT */
+    height: auto; /* NEU */
     background-color: var(--surface-color);
     border-radius: var(--radius);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    overflow: hidden;
+    /* overflow: hidden; KOMMENTIERT FÜR SCREENSHOT */
 }
 
-.chat-header {
+.chat-messages {
+    flex: 1;
+    /* overflow-y: auto; KOMMENTIERT FÜR SCREENSHOT */
+    overflow: visible; /* NEU */
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.2);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    gap: 16px;
+    scroll-behavior: smooth;
 }
 
 .header-left {

@@ -22,6 +22,7 @@ dependencies = [
     "tiktoken>=0.14.0",
     "pandas>=3.0.6",
     "renumics-spotlight>=1.7.1",
+    "streamlit>=1.64.0",
 ]
 
 [[tool.uv.index]]

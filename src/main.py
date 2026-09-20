@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
-from src.api.routes import router as chat_router
+from src.api.chat import router as chat_router
 from src.rag.chroma_manager import rag_manager
 from src.core.logger import get_logger
 

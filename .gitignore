@@ -40,3 +40,4 @@ data/authors/*/*
 /.run/ingest.run.xml
 
 *.7z
+/.agents/

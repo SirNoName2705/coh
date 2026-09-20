@@ -95,6 +95,8 @@ class SpeechCommand(AgentCommand[AgentResponse]):
             f"Abgerufener Wissenskontext (RAG):\n{self.context}\n\n"
             "Lege deine Absicht und deine Argumentation präzise dar. "
             "Nutze den 'inner_monologue' für deine Gedanken."
+            "WICHTIG: Gib direkt das befüllte JSON-Datenobjekt zurück. "
+            "Generiere unter keinen Umständen ein JSON-Schema (mit Wörtern wie 'properties' oder 'type')."
         )
 
 

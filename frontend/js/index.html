@@ -11,7 +11,20 @@
         <header class="chat-header">
             <div class="header-left">
                 <h1>Council of Heroes</h1>
-                <select id="hero-select" class="hero-dropdown">
+
+                <!-- NEU: Strategie Auswahl -->
+                <select id="strategy-select" class="hero-dropdown">
+                    <option value="organic_discussion">Organische Diskussion</option>
+                    <option value="agenda_voting">Agenda & Voting</option>
+                </select>
+
+                <!-- NEU: Moderator-Checkbox -->
+                <label style="color: #c0caf5; font-size: 0.9em; display: flex; align-items: center; gap: 5px;">
+                    <input type="checkbox" id="auto-moderator" checked> Moderator entscheidet
+                </label>
+
+                <!-- Manuelle Auswahl (wird deaktiviert, wenn Moderator an ist) -->
+                <select id="hero-select" class="hero-dropdown" disabled>
                     <option value="dale_carnegie">Dale Carnegie</option>
                     <option value="daniel_kahneman">Daniel Kahneman</option>
                     <option value="jack_nasher">Jack Nasher</option>
@@ -23,9 +36,7 @@
             <span class="status-indicator" id="status-indicator"></span>
         </header>
 
-        <main class="chat-messages" id="chat-messages">
-            <!-- Nachrichten werden hier dynamisch eingefügt -->
-        </main>
+        <main class="chat-messages" id="chat-messages"></main>
 
         <footer class="chat-input-area">
             <div class="input-wrapper">

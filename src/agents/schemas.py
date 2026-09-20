@@ -1,23 +1,14 @@
 #https://gemini.google.com/app/4af5ef208a00a4bd
 # src/agents/schemas.py
-from pydantic import BaseModel, Field, ConfigDict
+from pydantic import BaseModel, Field, ConfigDict, field_validator
+
 
 class AgentResponse(BaseModel):
-    """Schema for a standard conversational turn by an agent."""
     model_config = ConfigDict(strict=True)
-
-    inner_monologue: str = Field(
-        ...,
-        description="Your hidden chain of thought. Use this space to process the context, plan your response, and reflect on your character's persona before speaking. This is strictly private."
-    )
-    spoken_text: str = Field(
-        ...,
-        description="The actual dialogue you contribute to the council. It must be written strictly from your character's perspective and directly address the current topic."
-    )
-    referenced_concepts: list[str] = Field(
-        default_factory=list,
-        description="A list of key concepts, entities, or domain-specific terms you explicitly mentioned in your spoken_text."
-    )
+    inner_monologue: str = Field(..., description="Deine internen Gedanken.")
+    abstain: bool = Field(default=False, description="Setze dies auf True, wenn du dich der Stimme enthalten willst, weil du dem Diskurs nichts Neues hinzufügen kannst.")
+    spoken_text: str = Field(..., description="Was du dem Rat laut sagst. Bleibt leer, wenn abstain=True.")
+    proposed_agenda_items: list[str] = Field(default_factory=list)
 
 
 class ConsultationFeedback(BaseModel):
@@ -56,24 +47,24 @@ class ConsultationResponse(BaseModel):
     )
 
 
-class VoteResponse(BaseModel):
-    """Schema for an agent casting a vote among discrete options."""
-    model_config = ConfigDict(strict=True)
+class AgendaVote(BaseModel):
+    agenda_item: str = Field(..., description="Die genaue Ja/Nein-Frage von der Agenda.")
+    vote: bool = Field(..., description="True für Ja/Zustimmen, False für Nein/Ablehnen.")
+    reason: str = Field(..., description="Ein extrem kurzer Begründungssatz (max 10 Wörter).")
 
-    inner_monologue: str = Field(
-        ...,
-        description="Your internal deliberation weighing the pros and cons of the available options before committing to a decision."
-    )
-    chosen_option_id: str = Field(
-        ...,
-        description="The exact, unique identifier of the option you are voting for."
-    )
-    confidence_score: float = Field(
-        ...,
-        ge=0.0,
-        le=1.0,
-        description="A float representing your confidence in this vote, from 0.0 (completely uncertain/guessing) to 1.0 (absolutely certain)."
-    )
+    @field_validator('vote', mode='before')
+    @classmethod
+    def parse_boolean(cls, v):
+        # Fängt dumme LLM-Strings ab und macht echte Booleans draus
+        if isinstance(v, str):
+            return v.lower() in ('true', '1', 'ja', 'yes', 't')
+        return bool(v)
+
+
+class VoteResponse(BaseModel):
+    model_config = ConfigDict(strict=True)
+    inner_monologue: str = Field(..., description="Kurzes Abwägen der Agenda-Punkte.")
+    votes: list[AgendaVote] = Field(..., description="Deine Stimme für JEDEN Punkt auf der aktuellen Agenda.")
 
 
 class ModeratorDecision(BaseModel):
@@ -123,3 +114,8 @@ class TurnContext(BaseModel):
         default=None,
         description="The current text of the draft or proposal under review, if the current turn requires it. Null otherwise."
     )
+
+
+
+# src/agents/schemas.py (Auszug - füge das zu den bestehenden hinzu bzw. ersetze Agent/VoteResponse)
+
