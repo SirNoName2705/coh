@@ -36,3 +36,7 @@ data/authors/*/*
 
 # Behalte explizit die .gitkeep-Dateien
 !data/authors/*/.gitkeep
+/.run/Gen_context.run.xml
+/.run/ingest.run.xml
+
+*.7z
