@@ -30,6 +30,7 @@ Hinter den Kulissen ist das Ganze so aufgebaut:
     * **Alternativ-Modus (Agenda & Voting):** Die Experten schlagen konkrete Handlungspunkte vor und stimmen am Ende per Ja/Nein formell darüber ab.
 
 **Demo: So sieht eine Voting-Runde aus**
+
 [COH_Voting.webm](https://github.com/user-attachments/assets/f4e5996c-a40c-4ff4-b1b3-8b046882c6c9)
 
 
