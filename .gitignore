@@ -41,3 +41,7 @@ data/authors/*/*
 
 *.7z
 /.agents/
+
+
+/monolith/
+/create_monoliths.sh
