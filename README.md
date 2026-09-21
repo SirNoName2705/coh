@@ -1,3 +1,5 @@
+
+
 # 🏛️ Council of Heroes (COH)
 
 > **Project Status:** pre-pre-alpha (oder wie wir es nennen: Version -1.0).  
@@ -28,7 +30,7 @@ Hinter den Kulissen ist das Ganze so aufgebaut:
     * **Alternativ-Modus (Agenda & Voting):** Die Experten schlagen konkrete Handlungspunkte vor und stimmen am Ende per Ja/Nein formell darüber ab.
 
 **Demo: So sieht eine Voting-Runde aus**
-![Voting Preview_video](assets/COH_Voting.webm)
+[COH_Voting.webm](https://github.com/user-attachments/assets/f4e5996c-a40c-4ff4-b1b3-8b046882c6c9)
 
 
 3. **Das Innenleben (Inner Monologue):** Bevor ein Experte etwas „laut“ in die Runde sagt, lässt das System ihn in einem internen Monolog (Gedankengang) seine Strategie planen. Das macht die Antworten extrem nachvollziehbar.
@@ -36,4 +38,4 @@ Hinter den Kulissen ist das Ganze so aufgebaut:
 
 **Demo: Organische Diskussion**
 
-https://github.com/SirNoName2705/coh/raw/main/assets/COH_discussion.webm
+[COH_discussion.webm](https://github.com/user-attachments/assets/f8304e81-31c3-4e72-899d-2b819cf0450a)
