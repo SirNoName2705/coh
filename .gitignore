@@ -45,3 +45,4 @@ data/authors/*/*
 
 /monolith/
 /create_monoliths.sh
+.env
