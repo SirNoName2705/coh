@@ -3,6 +3,7 @@ import streamlit as st
 STRATEGY_OPTIONS = {
     "organic_discussion": "Organische Diskussion",
     "agenda_voting": "Agenda & Voting",
+    "document_review": "Dokumenten-Review"
 }
 
 def render_sidebar():

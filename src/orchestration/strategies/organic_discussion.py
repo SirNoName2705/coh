@@ -6,6 +6,7 @@ from fastapi import Request
 from src.core.logger import get_logger
 from src.agents.schemas import AgentResponse, TurnContext
 from src.agents.persona import PersonaManager
+from src.agents.prompt_builder import PromptBuilder
 from src.rag.chroma_manager import rag_manager
 from src.orchestration.strategies.base import TurnStrategy
 
@@ -14,91 +15,67 @@ logger = get_logger(__name__)
 
 class OrganicDiscussionStrategy(TurnStrategy):
     async def execute_turn_stream(self, context: TurnContext, llm_client, request: Request):
-        if not context.target_agents:
-            return
+        if not context.target_agents: return
 
         author_slugs = [a.lower().replace(" ", "_") for a in context.target_agents]
-
-        rag_tasks = [rag_manager.query_context(slug, context.current_topic, k=3) for slug in author_slugs]
-        persona_tasks = [PersonaManager.get_persona(slug) for slug in author_slugs]
-
-        rag_results = await asyncio.gather(*rag_tasks)
-        persona_results = await asyncio.gather(*persona_tasks)
+        rag_results = await asyncio.gather(*[rag_manager.query_context(s, context.current_topic) for s in author_slugs])
+        persona_results = await asyncio.gather(*[PersonaManager.get_persona(s) for s in author_slugs])
 
         history = []
 
-        # --- PHASE 1: Statements ---
+        # --- PHASE 1 ---
         yield f"data: {json.dumps({'status': 'info', 'message': 'Phase 1: Initiale Statements'})}\n\n"
-        for agent_name, rag_context, persona in zip(context.target_agents, rag_results, persona_results):
+        for agent, rag, persona in zip(context.target_agents, rag_results, persona_results):
             if await request.is_disconnected(): return
-            yield f"data: {json.dumps({'agent': agent_name, 'status': 'starting_agent'})}\n\n"
+            yield f"data: {json.dumps({'agent': agent, 'status': 'starting_agent'})}\n\n"
 
-            system_prompt = (
-                f"Du bist '{agent_name}'. Philosophie: {persona.core_philosophy}\n"
-                f"Wissen: {rag_context}\n"
-                "Formuliere dein erstes Statement."
-            )
-
+            system_prompt = PromptBuilder.organic_statement(agent, persona, rag)
             final_text = ""
             try:
-                stream_generator = llm_client.client.create_partial(
+                stream = llm_client.client.create_partial(
                     model=llm_client.config.llm_model_name,
                     response_model=AgentResponse,
                     messages=[{"role": "system", "content": system_prompt},
                               {"role": "user", "content": context.current_topic}],
-                    stream=True,
-                    api_base=llm_client.config.llm_base_url
+                    stream=True, api_base=llm_client.config.llm_base_url
                 )
-
-                async for partial_obj in stream_generator:
+                async for chunk in stream:
                     if await request.is_disconnected(): return
-                    yield f"data: {partial_obj.model_dump_json()}\n\n"
-                    if partial_obj.spoken_text:
-                        final_text = partial_obj.spoken_text
-
+                    yield f"data: {chunk.model_dump_json()}\n\n"
+                    if chunk.spoken_text: final_text = chunk.spoken_text
+            except asyncio.CancelledError:
+                logger.warning(f"Client Disconnect während Inferenz von {agent}. Gebe Ressourcen frei.")
+                raise  # Zwingend erforderlich laut Sektion 3.1
             except Exception as e:
-                logger.error(f"Inferenz-Fehler bei Phase 1 für {agent_name}: {e}")
-                error_msg = "[Der Experte konnte seine Gedanken nicht abschließen]"
-                final_text = final_text if final_text else error_msg
-                yield f"data: {json.dumps({'status': 'error', 'message': f'{agent_name} hatte einen Inferenz-Abbruch.'})}\n\n"
+                logger.error(f"Error {agent}: {e}")
+                final_text = "[Konnte Gedanken nicht abschließen]"
 
-            history.append(f"{agent_name}: {final_text}")
-            yield f"data: {json.dumps({'agent': agent_name, 'status': 'agent_done'})}\n\n"
+            history.append(f"{agent}: {final_text}")
+            yield f"data: {json.dumps({'agent': agent, 'status': 'agent_done'})}\n\n"
 
-        # --- PHASE 2: Replik (Eine Runde) ---
+        # --- PHASE 2 ---
         yield f"data: {json.dumps({'status': 'info', 'message': 'Phase 2: Offene Diskussion'})}\n\n"
         forum_context = "\n".join(history)
 
-        for agent_name, persona in zip(context.target_agents, persona_results):
+        for agent, persona in zip(context.target_agents, persona_results):
             if await request.is_disconnected(): return
-            yield f"data: {json.dumps({'agent': f'{agent_name} (Replik)', 'status': 'starting_agent'})}\n\n"
+            yield f"data: {json.dumps({'agent': f'{agent} (Replik)', 'status': 'starting_agent'})}\n\n"
 
-            system_prompt = (
-                f"Du bist '{agent_name}'. Reagiere auf die Aussagen:\n{forum_context}\n\n"
-                f"Philosophie: {persona.core_philosophy}\n"
-                "WICHTIG: Wenn du den bisherigen Aussagen fachlich nichts Substanzielles "
-                "mehr hinzuzufügen hast, setze das Feld 'abstain' zwingend auf True und "
-                "lass den 'spoken_text' leer."
-            )
-
+            system_prompt = PromptBuilder.organic_replik(agent, persona, forum_context)
             try:
-                stream_generator = llm_client.client.create_partial(
+                stream = llm_client.client.create_partial(
                     model=llm_client.config.llm_model_name,
                     response_model=AgentResponse,
                     messages=[{"role": "system", "content": system_prompt},
                               {"role": "user", "content": "Deine Replik:"}],
-                    stream=True,
-                    api_base=llm_client.config.llm_base_url
+                    stream=True, api_base=llm_client.config.llm_base_url
                 )
-
-                async for partial_obj in stream_generator:
+                async for chunk in stream:
                     if await request.is_disconnected(): return
-                    yield f"data: {partial_obj.model_dump_json()}\n\n"
-
+                    yield f"data: {chunk.model_dump_json()}\n\n"
+            except asyncio.CancelledError:
+                raise
             except Exception as e:
-                logger.error(f"Inferenz-Fehler bei Phase 2 für {agent_name}: {e}")
-                yield f"data: {json.dumps({'status': 'error', 'message': f'{agent_name} hatte einen Inferenz-Abbruch.'})}\n\n"
+                logger.error(f"Error {agent}: {e}")
 
-            yield f"data: {json.dumps({'agent': f'{agent_name} (Replik)', 'status': 'agent_done'})}\n\n"
-
-        yield f"data: {json.dumps({'status': 'info', 'message': 'Diskussion beendet.'})}\n\n"
+            yield f"data: {json.dumps({'agent': f'{agent} (Replik)', 'status': 'agent_done'})}\n\n"
