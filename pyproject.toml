@@ -23,6 +23,11 @@ dependencies = [
     "pandas>=3.0.6",
     "renumics-spotlight>=1.7.1",
     "streamlit>=1.64.0",
+    "transformers>=4.44.0,<4.46.0",
+    "ninja>=1.13.2",
+"torch>=2.6.0,<2.7.0",
+"torchvision>=0.21.0",
+"flash-attn==2.8.3.post1"
 ]
 
 [[tool.uv.index]]
@@ -32,3 +37,4 @@ explicit = true
 
 [tool.uv.sources]
 onnxruntime-gpu = { index = "onnxruntime-cuda12" }
+flash-attn = { url = "https://github.com/Dao-AILab/flash-attention/releases/download/v2.8.3.post1/flash_attn-2.8.3.post1+cu12torch2.5cxx11abiFALSE-cp312-cp312-linux_x86_64.whl" }
