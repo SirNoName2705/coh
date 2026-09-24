@@ -1,10 +1,27 @@
 import streamlit as st
+from pathlib import Path
 
 STRATEGY_OPTIONS = {
     "organic_discussion": "Organische Diskussion",
     "agenda_voting": "Agenda & Voting",
-    "document_review": "Dokumenten-Review"
+    "document_review": "Dokumenten-Review",
 }
+
+
+def get_dynamic_agents() -> list[str]:
+    """Scrapt den data/authors Ordner nach verfügbaren Personas."""
+    authors_dir = Path("data/authors")
+    if not authors_dir.exists():
+        return ["dale_carnegie", "daniel_kahneman"]  # Fallback
+
+    agents = []
+    # Alle Ordner durchsuchen, die eine persona.yaml haben
+    for d in authors_dir.iterdir():
+        if d.is_dir() and (d / "persona.yaml").exists():
+            agents.append(d.name)
+
+    return sorted(agents)
+
 
 def render_sidebar():
     st.sidebar.header("🏛️ Council of Heroes")
@@ -26,13 +43,24 @@ def render_sidebar():
 
     auto_mod = st.sidebar.checkbox("Moderator entscheidet", value=True, disabled=st.session_state.is_streaming)
 
+    # Lade die Agenten dynamisch aus dem Dateisystem
+    available_agents = get_dynamic_agents()
+
+    # Sicherstellen, dass der Default-Wert existiert
+    default_selection = []
+    for default_agent in ["dale_carnegie", "daniel_kahneman"]:
+        if default_agent in available_agents:
+            default_selection.append(default_agent)
+
     manual_agents = []
     if not auto_mod:
         manual_agents = st.sidebar.multiselect(
             "Custom Council zusammenstellen",
-            ["dale_carnegie", "daniel_kahneman", "jack_nasher", "robert_b_cialdini", "roman_braun", "thorsten_havener", "michael_ehlers"],
-            default=["dale_carnegie", "daniel_kahneman"],
-            disabled=st.session_state.is_streaming
+            options=available_agents,
+            default=default_selection if default_selection else None,
+            disabled=st.session_state.is_streaming,
+            # Macht aus "dale_carnegie_late" schön formatiert "Dale Carnegie Late" in der UI
+            format_func=lambda x: x.replace("_", " ").title()
         )
 
     st.sidebar.divider()
@@ -59,9 +87,6 @@ def format_votes(votes_list: list) -> str:
     return "\n".join(vote_lines)
 
 
-import streamlit as st
-
-
 def render_message(msg: dict):
     m_type = msg.get("type")
 
@@ -72,7 +97,9 @@ def render_message(msg: dict):
     elif m_type == "hero":
         agent_name = msg.get("agent", "Held")
         with st.chat_message("assistant", avatar="🏛️"):
-            st.markdown(f"### :{'blue'}[{agent_name}]")
+            # Nutzt auch hier das Formatieren für saubere Namen im Chat
+            display_name = agent_name.replace("_", " ").title()
+            st.markdown(f"### :{'blue'}[{display_name}]")
 
             # Monolog im einklappbaren Expander kapseln
             monologue = msg.get("inner_monologue", "").strip()
@@ -85,29 +112,7 @@ def render_message(msg: dict):
                 st.markdown(spoken)
 
     elif m_type == "info":
-        # Subtiler Hinweis statt auffälliger Zwischenruf
         st.caption(f"ℹ️ {msg.get('content', '')}")
 
     elif m_type == "error":
         st.error(f"⚠️ {msg.get('content', '')}", icon="🚨")
-
-# def render_message(msg: dict):
-#     m_type = msg.get("type")
-#
-#     if m_type == "user":
-#         with st.chat_message("user"):
-#             st.markdown(msg.get("content", ""))
-#     elif m_type == "hero":
-#         agent_name = msg.get("agent", "Held")
-#         with st.chat_message("assistant", avatar="🏛️"):
-#             st.markdown(f"**:{'blue'}[{agent_name}]**")
-#             monologue = msg.get("inner_monologue", "").strip()
-#             if monologue:
-#                 st.info(f"💭 *{monologue}*")
-#             spoken = msg.get("spoken_text", "").strip()
-#             if spoken:
-#                 st.markdown(spoken)
-#     elif m_type == "info":
-#         st.caption(f"--- {msg.get('content', '')} ---")
-#     elif m_type == "error":
-#         st.error(f"⚠️ {msg.get('content', '')}")
